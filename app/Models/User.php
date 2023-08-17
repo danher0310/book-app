@@ -42,4 +42,16 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function notes(){
+        return $this->hasMany(Note::class);
+    }
+
+    public function authors(){
+        return $this->morphedByMany(Author::class, 'userable');
+    }
+
+    public function books(){
+        return $this->morphedByMany(Book::class, 'userable');
+    }
 }
