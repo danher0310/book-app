@@ -6,6 +6,7 @@ namespace Database\Seeders;
 
 use App\Models\Author;
 use App\Models\Book;
+use App\Models\Genre;
 use App\Models\Image;
 use App\Models\Note;
 use App\Models\Profile;
@@ -30,9 +31,10 @@ class DatabaseSeeder extends Seeder
 
         Storage::deleteDirectory('public/images');
         Storage::makeDirectory('public/images');
+        Genre::factory(5)->create();
         $this->call(GenreSeeder::class);
         $this->call(UserSeeder::class);
-
+        $this->call(PublisherSeeder::class);
         Publisher::factory(5)->create();
         Author::factory()->has(Book::factory()->count(3))->create();
         Author::factory()->has(Book::factory()->count(2))->create();

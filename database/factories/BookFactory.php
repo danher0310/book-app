@@ -27,7 +27,7 @@ class BookFactory extends Factory
             'published' => $this->faker->date(),
             'description' => $this->faker->text(150),
             'genre_id' => Genre::all()->random()->id,
-            'published_id' => Publisher::all()->random()->id,
+            'publisher_id' => Publisher::all()->random()->id,
         ];
     }
 }

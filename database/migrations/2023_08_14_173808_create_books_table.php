@@ -21,8 +21,8 @@ return new class extends Migration
             $table->text('description')->fulltext();
             $table->unsignedBigInteger('genre_id');
             $table->foreign('genre_id')->references('id')->on('genres');
-            $table->unsignedBigInteger('published_id')->nulleable();
-            $table->foreign('published_id')->references('id')->on('publishers');
+            $table->unsignedBigInteger('publisher_id')->nulleable();
+            $table->foreign('publisher_id')->references('id')->on('publishers');
 
             $table->timestamps();
         });
