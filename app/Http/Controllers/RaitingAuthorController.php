@@ -27,9 +27,12 @@ class RaitingAuthorController extends Controller
             'author.id' => 'required|integer|exists:authors,id',
             'user.id' => 'required|integer|exists:users,id'
         ]);
+        
         try {
             $author = Author::findOrFail($request->author['id']);
+
             $author->users()->attach($request->user['id'], ['number_star' => $request->number_star]);
+
             return response()->json(['status' => true, 'message' => 'The Author score '.$author->full_name. 'was created successfully' ]);
         } catch (\Throwable $th) {
             return response()->json(['status' => false, 'message' => 'Error when we tried to register '. $th]);

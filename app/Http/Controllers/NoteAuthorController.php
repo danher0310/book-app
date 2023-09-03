@@ -31,11 +31,12 @@ class NoteAuthorController extends Controller
             'author.id' => 'required|integer|exists:authors,id',
             'user.id' => 'required|integer|exists:users,id',
         ]);
+
         try {
             $author = Author::findOrFail($request->author['id']);
 
             $author->note()->create(['description' => $request->description, 'writing_date' => $request->writing_date, 'user_id'=> $request->user['id']]);
-            return response()->json(['status' => true, 'message' => "The author's note ". $author->full_name . " was create successfully"]);
+            return response()->json(['status' => true, 'message' => "The author's note ". $author->full_name . " was create succesfully"]);
 
         } catch (\Throwable $th) {
             return response()->json(['status' =>false, 'message' => 'Error when we tried to register the note' . $th]);

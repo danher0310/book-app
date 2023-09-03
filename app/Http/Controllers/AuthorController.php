@@ -80,7 +80,7 @@ class AuthorController extends Controller
             'full_name' => 'required|max:75',
             'birth_date' => 'date|date_format:Y-m-d',
             'country' => 'max:75',
-            'image' =>'nullable|sometimes|iamge',
+            'image' =>'nullable|sometimes|image',
         ]);
 
 
